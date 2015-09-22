@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
  * Returns system information
@@ -8,10 +8,7 @@ function getSys() {
 	$os = strtolower(substr(PHP_OS, 0, 3));
 	$web = strtolower(PHP_SAPI) !== "cli";
 	
-	if ($web)
-		return 'web';
-	else
-		return $os;
+	return $web ? 'web' : $os;
 }
 
 /**
@@ -21,12 +18,12 @@ function getSys() {
 function getLineEnding() {
 	$sys = getSys();
 	
-	if ($sys === 'web')
+	if ($sys === 'web') {
 		return "<br />";
-	
-	if ($sys === "win")
+	}
+	if ($sys === "win") {
 		return "\r\n";
-	
+	}
 	return "\n";
 }
 
@@ -39,10 +36,10 @@ function hr_bytes($bytes) {
 	if ($bytes >= pow(1024, 3)) {
 		return sprintf("%.1f", ($bytes / pow(1024, 3))) . "G";
 	}
-	elseif ($bytes >= pow(1024, 2)) {
+	else if ($bytes >= pow(1024, 2)) {
 		return sprintf("%.1f", ($bytes / pow(1024, 2))) . "M";
 	}
-	elseif ($bytes >= 1024) {
+	else if ($bytes >= 1024) {
 		return sprintf("%.1f", ($bytes / (1024))) . "K";
 	}
 	else {
@@ -59,10 +56,10 @@ function hr_bytes_rnd($bytes) {
 	if ($bytes >= pow(1024, 3)) {
 		return round(($bytes / pow(1024, 3)), 0) . "G";
 	}
-	elseif ($bytes >= pow(1024, 2)) {
+	else if ($bytes >= pow(1024, 2)) {
 		return round(($bytes / pow(1024, 2)), 0) . "M";
 	}
-	elseif ($bytes >= 1024) {
+	else if ($bytes >= 1024) {
 		return round(($bytes / (1024)), 0) . "K";
 	}
 	else {
@@ -79,10 +76,10 @@ function hr_num($bytes) {
 	if ($bytes >= pow(1000, 3)) {
 		return round(($bytes / pow(1000, 3)), 0) . "G";
 	}
-	elseif ($bytes >= pow(1000, 2)) {
+	else if ($bytes >= pow(1000, 2)) {
 		return round(($bytes / pow(1000, 2)), 0) . "M";
 	}
-	elseif ($bytes >= 1000) {
+	else if ($bytes >= 1000) {
 		return round(($bytes / (1000)), 0) . "K";
 	}
 	else {
@@ -97,18 +94,19 @@ function hr_num($bytes) {
  */
 function pretty_uptime($uptime) {
 	$seconds = $uptime % 60;
-	$minutes = (int) (($uptime % 3600) / 60);
-	$hours = (int) (($uptime % 86400) / (3600));
-	$days = (int) ($uptime / (86400));
+	$minutes = (int)(($uptime % 3600) / 60);
+	$hours = (int)(($uptime % 86400) / 3600);
+	$days = (int)($uptime / 86400);
 	
-	if ($days > 0)
+	if ($days > 0) {
 		return "${days}d ${hours}h ${minutes}m ${seconds}s";
-	elseif ($hours > 0)
+	} else if ($hours > 0) {
 		return "${hours}h ${minutes}m ${seconds}s";
-	elseif ($minutes > 0)
+	} else if ($minutes > 0) {
 		return "${minutes}m ${seconds}s";
-	else
+	} else {
 		return "${seconds}s";
+	}
 }
 
 /**
@@ -158,17 +156,18 @@ function parseArgs($argv) {
 function loadOpts() {
 	global $argv, $opts;
 	
-	if(isset($argv)) {
-		foreach(parseArgs($argv) as $key => $value) {
+	if (isset($argv)) {
+		foreach (parseArgs($argv) as $key => $value) {
 			if(isset($opts[$key]))
 				$opts[$key] = $value;
 		}
 	}
 
-	if(isset($_REQUEST)) {
-		foreach($_REQUEST as $key => $value) {
-			if(isset($opts[$key]))
+	if (isset($_REQUEST)) {
+		foreach ($_REQUEST as $key => $value) {
+			if(isset($opts[$key])) {
 				$opts[$key] = $value;
+			}
 		}
 	}
 }
