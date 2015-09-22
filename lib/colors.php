@@ -1,22 +1,22 @@
-<?
+<?php
 
 $colors = array(
-	'red' 		=> array(
+	'red' => array(
 		'web' => '<font color="#FF0000">',
 		'nix' => "\033[01;31m",
 		),
-	'green'		=> array(
+	'green'	=> array(
 		'web' => '<font color="#00FF00">',
 		'nix' => "\033[01;32m",
 		),
-	'yellow'	=> array(
+	'yellow' => array(
 		'web' => '<font color="#FFFF00">',
 		'nix' => "\033[01;33m",
 		),
-	'clear'		=> array(
+	'clear'	=> array(
 		'web' => '</font>',
 		'nix' => "\033[0m",
-		),
+		)
 );
 
 /**
@@ -26,16 +26,19 @@ $colors = array(
 function getColor($color) {
 	global $colors, $opts;
 	
-	if ($opts['nocolor'])
+	if ($opts['nocolor']) {
 		return;
+	}
 	
 	$sys = getSys();
 	
-	if($sys === 'lin')
+	if ($sys === 'lin') {
 		$sys = 'nix';
+	}
 	
-	if(!isset($colors[$color]))
+	if (!isset($colors[$color])) {
 		return;
+	}
 
-	return($colors[$color][$sys]);
+	return $colors[$color][$sys];
 }
