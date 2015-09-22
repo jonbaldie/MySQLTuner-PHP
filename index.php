@@ -1,12 +1,12 @@
-<?
+<?php
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 $version = '0.0.1';
 
-require_once('lib/colors.php');
-require_once('lib/functions.php');
+require 'lib/colors.php';
+require 'lib/functions.php';
 
 $opts = array(
 	'nobad' => false,
@@ -22,13 +22,12 @@ $opts = array(
 	'pass' => false,
 	'skipsize' => false,
 	'checkversion' => false,
-	'help' => false,
+	'help' => false
 );
 
 // Load our options from either $_REQUEST, or from command line
 loadOpts();
 
-if($opts['help'] !== false) {
-	echo(showUsage());
-	exit(0);
+if ($opts['help'] !== false) {
+	exit(showUsage());
 }
