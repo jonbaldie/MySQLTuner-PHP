@@ -12,22 +12,6 @@ function getSys() {
 }
 
 /**
- * Returns Line Ending character(s) based on current usage of PHP
- * @return string
- */
-function getLineEnding() {
-	$sys = getSys();
-	
-	if ($sys === 'web') {
-		return "<br />";
-	}
-	if ($sys === "win") {
-		return "\r\n";
-	}
-	return "\n";
-}
-
-/**
  * Calculates the parameter passed in bytes, and then rounds it to one decimal place
  * @param int $bytes
  * @return string
@@ -173,35 +157,35 @@ function loadOpts() {
  */
 function showUsage() {
 	global $version;
-	return("   MySQLTuner $version - MySQL High Performance Tuning Script" . getLineEnding() .
-		'   Bug reports, feature requests, and downloads at https://github.com/zeryl/MySQLTuner-PHP' . getLineEnding() .
-		'   Maintained by Zeryl (lordsaryon@gmail.com) - Licensed under GPL' . getLineEnding() .
-		'   Original by Major Hayden (major@mhtx.net)' . getLineEnding() .
-		getLineEnding() .
-		'   Important Usage Guidelines:' . getLineEnding() .
-		'      To run the script with the default options, run the script without arguments' . getLineEnding() .
-		'      Allow MySQL server to run for at least 24-48 hours before trusting suggestions' . getLineEnding() .
-		'      Some routines may require root level privileges (script will provide warnings)' . getLineEnding() .
-		'      You must provide the remote server\'s total memory when connecting to other servers' . getLineEnding() .
-		getLineEnding() .
-		'   Connection and Authentication' . getLineEnding() .
-		'      --host <hostname>    Connect to a remote host to perform tests (default: localhost)' . getLineEnding() .
-		'      --socket <socket>    Use a different socket for a local connection' . getLineEnding() .
-		'      --port <port>        Port to use for connection (default: 3306)' . getLineEnding() .
-		'      --user <username>    Username to use for authentication' . getLineEnding() .
-		'      --pass <password>    Password to use for authentication' . getLineEnding() .
-		getLineEnding() .
-		'   Performance and Reporting Options' . getLineEnding() .
-		'      --skipsize           Don\'t enumerate tables and their types/sizes (default: on)' . getLineEnding() .
-		'                             (Recommended for servers with many tables)' . getLineEnding() .
-		'      --checkversion       Check for updates to MySQLTuner (default: don\'t check)' . getLineEnding() .
-		'      --forcemem <size>    Amount of RAM installed in megabytes' . getLineEnding() .
-		'      --forceswap <size>   Amount of swap memory configured in megabytes' . getLineEnding() .
-		getLineEnding() .
-		'   Output Options:' . getLineEnding() .
-		'      --nogood             Remove OK responses' . getLineEnding() .
-		'      --nobad              Remove negative/suggestion responses' . getLineEnding() .
-		'      --noinfo             Remove informational responses' . getLineEnding() .
-		'      --nocolor            Don\'t print output in color' . getLineEnding() .
-		getLineEnding());
+	return("   MySQLTuner $version - MySQL High Performance Tuning Script" . PHP_EOL .
+		'   Bug reports, feature requests, and downloads at https://github.com/zeryl/MySQLTuner-PHP' . PHP_EOL .
+		'   Maintained by Zeryl (lordsaryon@gmail.com) - Licensed under GPL' . PHP_EOL .
+		'   Original by Major Hayden (major@mhtx.net)' . PHP_EOL .
+		PHP_EOL .
+		'   Important Usage Guidelines:' . PHP_EOL .
+		'      To run the script with the default options, run the script without arguments' . PHP_EOL .
+		'      Allow MySQL server to run for at least 24-48 hours before trusting suggestions' . PHP_EOL .
+		'      Some routines may require root level privileges (script will provide warnings)' . PHP_EOL .
+		'      You must provide the remote server\'s total memory when connecting to other servers' . PHP_EOL .
+		PHP_EOL .
+		'   Connection and Authentication' . PHP_EOL .
+		'      --host <hostname>    Connect to a remote host to perform tests (default: localhost)' . PHP_EOL .
+		'      --socket <socket>    Use a different socket for a local connection' . PHP_EOL .
+		'      --port <port>        Port to use for connection (default: 3306)' . PHP_EOL .
+		'      --user <username>    Username to use for authentication' . PHP_EOL .
+		'      --pass <password>    Password to use for authentication' . PHP_EOL .
+		PHP_EOL .
+		'   Performance and Reporting Options' . PHP_EOL .
+		'      --skipsize           Don\'t enumerate tables and their types/sizes (default: on)' . PHP_EOL .
+		'                             (Recommended for servers with many tables)' . PHP_EOL .
+		'      --checkversion       Check for updates to MySQLTuner (default: don\'t check)' . PHP_EOL .
+		'      --forcemem <size>    Amount of RAM installed in megabytes' . PHP_EOL .
+		'      --forceswap <size>   Amount of swap memory configured in megabytes' . PHP_EOL .
+		PHP_EOL .
+		'   Output Options:' . PHP_EOL .
+		'      --nogood             Remove OK responses' . PHP_EOL .
+		'      --nobad              Remove negative/suggestion responses' . PHP_EOL .
+		'      --noinfo             Remove informational responses' . PHP_EOL .
+		'      --nocolor            Don\'t print output in color' . PHP_EOL .
+		PHP_EOL);
 }
