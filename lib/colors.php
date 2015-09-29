@@ -26,7 +26,7 @@ $colors = array(
 function getColor($color) {
 	global $colors, $opts;
 	
-	if ($opts['nocolor']) {
+	if ($opts['nocolor'] || !isset($colors[$color])) {
 		return;
 	}
 	
@@ -34,10 +34,6 @@ function getColor($color) {
 	
 	if ($sys === 'lin') {
 		$sys = 'nix';
-	}
-	
-	if (!isset($colors[$color])) {
-		return;
 	}
 
 	return $colors[$color][$sys];
