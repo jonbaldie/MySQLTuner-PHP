@@ -1,1 +1,4 @@
-This is a PHP version of mysqltuner.pl (https://github.com/rackerhacker/MySQLTuner-perl written by Major Hayden (major@mhtx.net)), Ported by Zeryl. Licensed under GPLv3
+I have forked this to make various formatting and performance improvements.
+
+Original README by zeryl:
+"This is a PHP version of mysqltuner.pl (https://github.com/rackerhacker/MySQLTuner-perl written by Major Hayden (major@mhtx.net)), Ported by Zeryl. Licensed under GPLv3"
