@@ -36,15 +36,13 @@ function hr_bytes($bytes) {
 	if ($bytes >= pow(1024, 3)) {
 		return sprintf("%.1f", ($bytes / pow(1024, 3))) . "G";
 	}
-	else if ($bytes >= pow(1024, 2)) {
+	if ($bytes >= pow(1024, 2)) {
 		return sprintf("%.1f", ($bytes / pow(1024, 2))) . "M";
 	}
-	else if ($bytes >= 1024) {
+	if ($bytes >= 1024) {
 		return sprintf("%.1f", ($bytes / (1024))) . "K";
 	}
-	else {
-		return $bytes . "B";
-	}
+	return $bytes . "B";
 }
 
 /**
@@ -56,15 +54,13 @@ function hr_bytes_rnd($bytes) {
 	if ($bytes >= pow(1024, 3)) {
 		return round(($bytes / pow(1024, 3)), 0) . "G";
 	}
-	else if ($bytes >= pow(1024, 2)) {
+	if ($bytes >= pow(1024, 2)) {
 		return round(($bytes / pow(1024, 2)), 0) . "M";
 	}
-	else if ($bytes >= 1024) {
+	if ($bytes >= 1024) {
 		return round(($bytes / (1024)), 0) . "K";
 	}
-	else {
-		return round($bytes, 0) . "B";
-	}
+	return round($bytes, 0) . "B";
 }
 
 /**
@@ -76,15 +72,13 @@ function hr_num($bytes) {
 	if ($bytes >= pow(1000, 3)) {
 		return round(($bytes / pow(1000, 3)), 0) . "G";
 	}
-	else if ($bytes >= pow(1000, 2)) {
+	if ($bytes >= pow(1000, 2)) {
 		return round(($bytes / pow(1000, 2)), 0) . "M";
 	}
-	else if ($bytes >= 1000) {
+	if ($bytes >= 1000) {
 		return round(($bytes / (1000)), 0) . "K";
 	}
-	else {
-		return round($bytes, 0) . "B";
-	}
+	return round($bytes, 0) . "B";
 }
 
 /**
@@ -100,13 +94,14 @@ function pretty_uptime($uptime) {
 	
 	if ($days > 0) {
 		return "${days}d ${hours}h ${minutes}m ${seconds}s";
-	} else if ($hours > 0) {
-		return "${hours}h ${minutes}m ${seconds}s";
-	} else if ($minutes > 0) {
-		return "${minutes}m ${seconds}s";
-	} else {
-		return "${seconds}s";
 	}
+	if ($hours > 0) {
+		return "${hours}h ${minutes}m ${seconds}s";
+	}
+	if ($minutes > 0) {
+		return "${minutes}m ${seconds}s";
+	}
+	return "${seconds}s";
 }
 
 /**
